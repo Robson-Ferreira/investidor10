@@ -1,0 +1,158 @@
+:root {
+    --primary-color: #0A0A3C;
+}
+
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    width: 100%;
+}
+
+.menu {
+    background-color: var( --primary-color);
+    color: #FFFF;
+    font-size: 18px;
+    margin: 0;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.menu-info {
+    display: flex;
+    gap: 30px;
+    margin: 5%;
+    align-items: center;
+}
+
+.menu-button {
+    text-decoration: none;
+    color: #FFF;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu-button:hover {
+    opacity: 80%;
+}
+
+.search {
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    /* padding-left: 30px; */
+    height: 30px;
+}
+
+.search-container {
+    position: relative;
+}
+
+
+.search-icon {
+    position: absolute;
+    right: 5px; /* Posiciona o ícone à direita do input */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #888; /* Cor do ícone, ajuste conforme necessário */
+}
+
+.search-icon i {
+    font-size: 20px; /* Ajusta o tamanho do ícone conforme necessário */
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border: none;
+    color: #FFFF;
+}
+
+.logo {
+    margin-left: 5%;
+}
+
+.img-logo {
+    width: 35px;
+    height: 35px;
+}
+
+.root {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    justify-content: flex-start;
+}
+
+.conteudo {
+    width: 250px;
+    border: solid 1px var(--primary-color);
+    background-color: antiquewhite;
+    display: grid;
+    gap: 10px;
+    padding: 20px;
+}
+
+.footer {
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: #FFFF;
+    font-size: 24px;
+    height: 90px;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+
+.wrapper {
+    margin: 10%;
+}
+
+.action {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-end;
+}
+
+.action-button {
+    width: 140px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--primary-color);
+    color: #FFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.action-button:hover {
+    opacity: 80%;
+}
+
+
+@media (max-width: 768px) {
+    .root {
+        flex-direction: column; /* Altera para column quando a tela é menor que 768px */
+        height: auto; /* Altura automática para o conteúdo */
+    }
+}
+
