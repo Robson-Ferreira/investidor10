@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("search").addEventListener("keyup", function(event) {
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("search").addEventListener("keyup", function (event) {
         // Verifica se a tecla pressionada é Enter (código 13)
         if (event.key === "Enter") {
             // Obtém o valor do input
@@ -14,4 +14,62 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
+
+    // Lógica JavaScript para abrir e fechar o modal
+    document.getElementById('openModalButton').addEventListener('click', function () {
+        document.getElementById('categoryModal').style.display = 'block';
+    });
+
+    document.getElementById('closeModalButton').addEventListener('click', function () {
+        document.getElementById('categoryModal').style.display = 'none';
+        document.getElementById('categoryName').value = '';
+    });
+
+    document.getElementById('cancelButton').addEventListener('click', function () {
+        document.getElementById('categoryModal').style.display = 'none';
+        document.getElementById('categoryName').value = '';
+    });
+
+    document.getElementById('saveCategoryButton').addEventListener('click', function () {
+        const categoryName = document.getElementById('categoryName').value.trim();
+
+        if (categoryName.length === 0 || categoryName.length > 255) {
+            alert('O nome da categoria é obrigatório e deve ter no máximo 255 caracteres.');
+            return;
+        }
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', `${window.location.origin}/newspaper-category`, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    const categorySelect = document.querySelector('select[name="category_id"]');
+                    const newOption = document.createElement('option');
+                    newOption.value = response.category.id;
+                    newOption.text = response.category.name;
+                    categorySelect.appendChild(newOption);
+
+                    categorySelect.value = response.category.id;
+
+                    document.getElementById('categoryModal').style.display = 'none';
+                    document.getElementById('categoryName').value = '';
+                } else {
+                    alert('Erro ao salvar a categoria. Tente novamente.');
+                }
+            }
+        };
+
+        const data = JSON.stringify({ name: categoryName });
+        xhr.send(data);
+    });
+
+    window.onclick = function (event) {
+        if (event.target == document.getElementById('categoryModal')) {
+            document.getElementById('categoryModal').style.display = 'none';
+            document.getElementById('categoryName').value = '';
+        }
+    }
 });

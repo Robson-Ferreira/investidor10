@@ -7,7 +7,7 @@
                 <h2>{{ $newspaper->title }}</h2>
             </div>
             <div class="description">
-                {{ $newspaper['description'] }}
+                {{ $newspaper->description }}
             </div>
             <div class="action">
                 <button class="action-button">Acessar</button>
