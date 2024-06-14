@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\NewsPaperController;
+use App\Http\Controllers\NewspaperController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,16 +18,16 @@ use Illuminate\Support\Facades\Route;
 //     return view('index');
 // });
 
-Route::get('/', [NewsPaperController::class, 'index'])->name('index');
+Route::get('/', [NewspaperController::class, 'index'])->name('index');
 
 
 
-// Route::get('/produtos', [NewsPaperController::class, 'index'])->name('produtos.index');
+// Route::get('/produtos', [NewspaperController::class, 'index'])->name('produtos.index');
 
 Route::group(['prefix' => 'newspaper', 'as' => 'newspaper.'], function () {
-    Route::get('/', [NewsPaperController::class, 'index'])->name('index');
-    Route::get('/create', [NewsPaperController::class, 'create'])->name('create');
-    Route::post('/', [NewsPaperController::class, 'store'])->name('store');
+    Route::get('/', [NewspaperController::class, 'index'])->name('index');
+    Route::get('/create', [NewspaperController::class, 'create'])->name('create');
+    Route::post('/', [NewspaperController::class, 'store'])->name('store');
     // Route::get('/{id}', [ProdutoController::class, 'show'])->name('show');
     // Route::get('/{id}/edit', [ProdutoController::class, 'edit'])->name('edit');
     // Route::put('/{id}', [ProdutoController::class, 'update'])->name('update');

@@ -6,7 +6,7 @@ use App\Models\Newspaper;
 use App\Models\NewspaperCategory;
 use Illuminate\Http\Request;
 
-class NewsPaperController extends Controller
+class NewspaperController extends Controller
 {
     public function index(Request $request)
     {
